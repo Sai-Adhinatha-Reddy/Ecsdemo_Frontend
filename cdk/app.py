@@ -55,7 +55,7 @@ class FrontendService(Stack):
         self.base_platform = BasePlatform(self, "BasePlatform") 
 
         self.fargate_task_image = ecs_patterns.ApplicationLoadBalancedTaskImageOptions(
-            image=ecs.ContainerImage.from_registry("public.ecr.aws/aws-containers/ecsdemo-frontend"),
+            image=ecs.ContainerImage.from_registry("public.ecr.aws/aws-containers/Ecsdemo_Frontend"),
             container_port=3000,
             environment={
                 "CRYSTAL_URL": "http://ecsdemo-crystal.service.local:3000/crystal",

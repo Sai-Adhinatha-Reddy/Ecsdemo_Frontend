@@ -58,8 +58,8 @@ class FrontendService(Stack):
             image=ecs.ContainerImage.from_registry("public.ecr.aws/aws-containers/Ecsdemo_Frontend"),
             container_port=3000,
             environment={
-                "CRYSTAL_URL": "http://ecsdemo-crystal.service.local:3000/crystal",
-                "NODEJS_URL": "http://ecsdemo-nodejs.service.local:3000",
+                "CRYSTAL_URL": "http://Ecsdemo_Crystal.service.local:3000/crystal",
+                "NODEJS_URL": "http://Ecsdemo_Nodejs.service.local:3000",
                 "REGION": os.getenv('AWS_DEFAULT_REGION')
             },
         )
@@ -161,7 +161,7 @@ class FrontendServiceMesh(Stack):
         
         self.app_container = self.fargate_task_def.add_container(
             "FrontendServiceContainerDef",
-            image=ecs.ContainerImage.from_registry("public.ecr.aws/aws-containers/ecsdemo-frontend"),
+            image=ecs.ContainerImage.from_registry("public.ecr.aws/aws-containers/Ecsdemo_Frontend"),
             logging=ecs.LogDriver.aws_logs(
                 stream_prefix='/frontend-container',
                 log_group=self.logGroup
@@ -169,8 +169,8 @@ class FrontendServiceMesh(Stack):
             essential=True,
             memory_reservation_mib=128,
             environment={
-                "CRYSTAL_URL": "http://ecsdemo-crystal.service.local:3000/crystal",
-                "NODEJS_URL": "http://ecsdemo-nodejs.service.local:3000",
+                "CRYSTAL_URL": "http://Ecsdemo_Crystal.service.local:3000/crystal",
+                "NODEJS_URL": "http://Ecsdemo_Nodejs.service.local:3000",
                 "REGION": os.getenv('AWS_DEFAULT_REGION')
             },
             container_name="frontend-app"
